@@ -1,0 +1,48 @@
+
+.board{
+    height:680px;
+    width: 680px;
+    border:1px grey solid;
+    display:block;
+}
+
+/* Used to display the checkers pieces */
+.squares{
+    /* height:640px;
+    width: 640px; */
+    margin:20;   
+    display:block;   
+}
+.square-row{
+    display: inline-block;
+    margin-top:-5px;
+    
+}
+.square-row:nth-child(even) .square:nth-child(even) {
+    background: lightgreen
+}
+.square-row:nth-child(even) .square:nth-child(odd) {
+    background: #FFF
+}
+.square-row:nth-child(odd) .square:nth-child(even) {
+    background: #FFF
+}
+.square-row:nth-child(odd) .square:nth-child(odd) {
+    background: lightgreen
+}
+.square{
+    height:80px;
+    width:80px;
+    /* border-left:1px solid;
+    border-top:1px solid; */
+    display:inline-block;
+    border:1px solid grey;
+    margin:0;
+       padding:0px;
+       margin-left:-6px;
+}
+
+
+.square-number{
+ float: left;
+}
