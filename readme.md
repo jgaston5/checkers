@@ -1,0 +1,1 @@
+A fun little repo for making a checkers game with basic Js and CSS
