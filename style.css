@@ -61,5 +61,5 @@
 .square-number{
     float: left;
     z-index: 2000;
-    position: fixed;
+    position: absolute;
 }
