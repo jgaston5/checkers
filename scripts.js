@@ -1,10 +1,23 @@
 function newGame() {
+    clearBoard()
     initializeBoard();
 }
 
 function initializeBoard() {
     initializeRedSquares();
     initializeWhiteSquares();
+}
+
+function clearBoard() {
+    var checkers = document.querySelectorAll(".checker");
+
+    if (checkers && checkers.length > 0) {
+        checkers.forEach(checker => {
+            // there is a bug here
+            document.removeChild(checker)
+        });
+    }
+
 }
 
 function initializeWhiteSquares() {
