@@ -13,8 +13,7 @@ function clearBoard() {
 
     if (checkers && checkers.length > 0) {
         checkers.forEach(checker => {
-            // there is a bug here
-            document.removeChild(checker)
+            checker.remove();
         });
     }
 
