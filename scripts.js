@@ -1,5 +1,5 @@
 
-var counter = 1;
+var idCounter = 1;
 function newGame() {
     clearBoard()
     initializeBoard();
@@ -52,21 +52,43 @@ function createChecker(colorClass) {
     checker.draggable = true;
     checker.ondragstart = drag
 
-    checker.id = counter;
-    counter++;
+    checker.id = idCounter;
+    idCounter++;
     return checker;
 }
 
-function dragenter(ev) {
-    ev.preventDefault();
+function dragenter(event) {
+    event.preventDefault();
 }
 
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
 }
 
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+function drop(event) {
+    event.preventDefault();
+
+    var checkerId = event.dataTransfer.getData("text");
+    var checker = document.getElementById(checkerId);
+    var targetSquare = event.target;
+    var isValidMoveResult = isValidMove(checker, targetSquare);
+    if (isValidMoveResult) {
+        event.target.appendChild(checker);
+    } else {
+        alert("there is a checker there")
+    }
+}
+
+function isValidMove(checker, targetSquare) {
+    var isValidMoveResult = targetSquare.childNodes
+        && targetSquare.childNodes.length > 0;
+
+    targetSquare.childNodes.forEach(childNode => {
+        console.log("node className " + childNode.childNode)
+        var spaceHasChecker = (childNode.childNode && childNode.className.indexOf("checker") >= 0)
+        if (spaceHasChecker) {
+            isValidMoveResult = false;
+        }
+    });
+    return isValidMoveResult;
 }
