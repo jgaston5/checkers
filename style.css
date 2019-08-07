@@ -72,3 +72,21 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+
+/* alerts */
+.alert{
+ border-radius: 5%;
+ display: none;
+ padding:1em;
+}
+
+.alert-danger{
+    background-color: lightcoral;
+}
+.alert-success{
+    background-color: lightgreen;
+}
+.alert-info{
+    background-color: lightblue;
+}

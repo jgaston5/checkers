@@ -1,6 +1,7 @@
 
 var idCounter = 1;
 function newGame() {
+    showInfo("New game");
     clearBoard()
     initializeBoard();
     markValidSquares()
@@ -75,7 +76,7 @@ function drop(event) {
     if (isValidMoveResult) {
         event.target.appendChild(checker);
     } else {
-        alert("there is a checker there")
+        showError("There is a checker there")
     }
 }
 
@@ -84,11 +85,34 @@ function isValidMove(checker, targetSquare) {
         && targetSquare.childNodes.length > 0;
 
     targetSquare.childNodes.forEach(childNode => {
-        console.log("node className " + childNode.childNode)
         var spaceHasChecker = (childNode.childNode && childNode.className.indexOf("checker") >= 0)
         if (spaceHasChecker) {
             isValidMoveResult = false;
         }
     });
     return isValidMoveResult;
+}
+
+function showAlert(alertId, message, timeout) {
+    var alerts = document.querySelectorAll(".alert");
+    alerts.forEach(alert => alert.style.display = "none");
+    var alertBox = document.getElementById(alertId);
+    alertBox.innerText = message;
+    alertBox.style.display = "block";
+    setTimeout(() => alertBox.style.display = "none", timeout);
+}
+
+function showError(message, timeout = 3000) {
+    var alertId = "errorAlert";
+    showAlert(alertId, message, timeout);
+}
+
+function showInfo(message, timeout = 3000) {
+    var alertId = "infoAlert";
+    showAlert(alertId, message, timeout);
+}
+
+function showSucces(message, timeout = 3000) {
+    var alertId = "successAlert";
+    showAlert(alertId, message, timeout);
 }
