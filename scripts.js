@@ -1,5 +1,6 @@
 
 var idCounter = 1;
+var kingClassName = "king";
 function newGame() {
     showInfo("New game");
     clearBoard()
@@ -42,7 +43,6 @@ function initializeRedSquares() {
         var checker = createChecker("red");
         square.appendChild(checker);
     });
-    squares.forEach(x => x.ondrop)
 }
 
 function createChecker(colorClass) {
@@ -115,4 +115,16 @@ function showInfo(message, timeout = 3000) {
 function showSucces(message, timeout = 3000) {
     var alertId = "successAlert";
     showAlert(alertId, message, timeout);
+}
+
+function makeKing() {
+    var checkerId = 3;
+    var checker = document.getElementById(checkerId);
+    if (!isKing(checker)) {
+        checker.classList.add(kingClassName);
+    }
+}
+
+function isKing(checker) {
+    return checker.classList.contains(kingClassName);
 }
